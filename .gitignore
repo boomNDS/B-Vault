@@ -1,0 +1,51 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# macOS system files
+# ──────────────────────────────────────────────────────────────────────────────
+# Ignore Finder metadata and resource forks (DS_Store, AppleDouble)  
+.DS_Store                                         # macOS folder attributes
+.AppleDouble                                        # AppleDouble files  
+.LSOverride                                        # Finder override files  
+
+# Icon files created by macOS in directories  
+Icon?                                              # Icon\r files
+
+# Thumbnails  
+Thumbs.db                                          # Windows thumbnail cache
+
+# ──────────────────────────────────────────────────────────────────────────────
+# General build artifacts & temp files
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Logs and temp  
+*.log                                              # Log files
+logs/                                              # Log directories
+tmp/                                               # Temporary files
+.cache/                                            # Caches 
+
+# ──────────────────────────────────────────────────────────────────────────────
+# ASDF version‑manager artifacts
+# ──────────────────────────────────────────────────────────────────────────────
+/.asdf/installs/                                   # ASDF installed tool versions
+/.asdfrc                                           # ASDF user config (if you keep it local)
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Environment and secret files
+# ──────────────────────────────────────────────────────────────────────────────
+.env                                               # Environment variables 
+.env.*                                             # Any env-specific files
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Editor directories and IDE files
+# ──────────────────────────────────────────────────────────────────────────────
+.idea/                                             # JetBrains IDEs
+.vscode/                                           # VS Code
+*.sublime-project                                  # Sublime project files
+*.sublime-workspace                                # Sublime workspace files 
+
+# Vim swap files  
+*.swp                                              # Vim swap
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Exclude the gitignore itself from patterns if needed
+# ──────────────────────────────────────────────────────────────────────────────
+!/.gitignore                                       # Always include this file  
