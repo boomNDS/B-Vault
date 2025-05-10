@@ -1,0 +1,41 @@
+[user]
+	name = username
+	email = email@mail.com
+
+[alias]
+  # Status & Log
+  st       = status -sb                 # concise status with branch info
+  s        = status -s                  # very short status
+  ll       = log --oneline --graph --decorate  # one‑line grap
+  lg       = log --oneline --graph --all       # full graph
+
+  # Branch & Checkout
+  co       = checkout                  # switch branches
+  br       = branch                    # list/create branches
+  sw       = switch                    # modern branch switch
+  nb       = checkout -b               # new branch & switch
+
+  # Commit & Amend
+  ci       = commit -m                  # commit with message
+  cm       = commit -v -m               # verbose commit
+  amend    = commit --amend --no-edit   # amend last commit
+  lf       = log -1 HEAD --stat         # last commit details
+
+  # Undo & Fixup
+  unstage  = reset HEAD --              # unstage changes
+  dc       = diff --cached              # diff staged changes
+  fixup    = "!f() { git commit --fixup \":/$1\"; }; f"  # fixup by msg
+  pristine = "!git reset --hard && git clean -dfx"     # wipe working tree
+
+[gpg]
+	program = gpg
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[includeIf "gitdir:~/Desktop/git/workDir/"]
+	part = .gitconfig-work
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
