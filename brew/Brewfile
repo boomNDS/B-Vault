@@ -1,0 +1,73 @@
+# Brewfile
+
+tap "homebrew/core"
+tap "homebrew/cask"
+
+# Install mas CLI for Mac App Store apps
+brew "mas"
+
+# Formulae
+brew "asdf"             # Version manager for multiple runtimes
+brew "bat"              # cat clone with syntax highlighting
+brew "btop"             # Resource monitor with nice UI
+brew "curl"             # Data transfer utility
+brew "exa"              # Modern replacement for 'ls'
+brew "fd"               # Simple, fast alternative to 'find'
+brew "fzf"              # Command-line fuzzy finder
+brew "git"              # Distributed version control system
+brew "htop"             # Interactive process viewer
+brew "httpie"           # Human-friendly HTTP client for APIs
+brew "jq"               # Lightweight JSON processor
+brew "mkcert"           # Easily create local SSL certificates
+brew "nmap"             # Network exploration and security auditing
+brew "oha"              # HTTPing on steroids
+brew "pnpm"             # Fast, disk-efficient JS package manager
+brew "python"           # Latest Python interpreter
+brew "redis"            # In-memory data structure store
+brew "telnet"           # User interface to Telnet protocol
+brew "tree"             # Display directory tree in terminal
+brew "tldr"             # Simplified, example-driven man pages
+brew "vim"              # Highly configurable text editor
+brew "watch"            # Execute a program periodically
+brew "wget"             # Network downloader
+brew "webp"             # Image format utilities
+brew "zimg"             # High-quality image scaling library
+brew "zoxide"           # Fast, adaptive directory jumper
+brew "zsh"              # Z shell
+brew "zsh-completions"  # Additional Zsh completions
+brew "zstd"             # Fast compression algorithm
+
+# Casks
+cask "1password"
+cask "aegisub"
+cask "bear"
+cask "brave-browser"
+cask "discord"
+cask "figma"
+cask "flux"
+cask "ghostty"
+cask "google-chrome"
+cask "hex-fiend"
+cask "line"
+cask "medis"
+cask "monitorcontrol"
+cask "ngrok"
+cask "notion"
+cask "obs"
+cask "orbstack"
+cask "parcel"
+cask "pop"
+cask "postman"
+cask "quitter"
+cask "runcat"
+cask "steam"
+cask "suspicious-package"
+cask "tableplus"
+cask "terminus"
+cask "vanilla"
+cask "zed"
+
+# Mac App Store apps via mas
+mas "Monosnap",         id: 540348655
+mas "Telegram",         id: 747648890   # Telegram Desktop
+mas "CleanMyMac X",     id: 403504912
