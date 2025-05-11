@@ -1,5 +1,5 @@
 # B-Vault
-CLI tool collection and a step‑by‑step setup guide for your new shell environment.
+CLI tool collection and a step‑by‑step setup guide for your new shell environment. (I write for my future setup, never test it yet, it's a copy of my current setup, and add some improvements)
 
 ## Overview
 
@@ -27,24 +27,9 @@ Each step is automated via a single `setup.sh` script, backed by modular config 
    bash setup.sh
    ```
 3. Restart your terminal or run source ~/.zshrc to apply changes.
-
-### Repository Structure
-  ```bash
-    .
-    ├── .gitignore             # This file
-    ├── setup.sh               # One‑shot bootstrap script
-    ├── brew/
-    │   └── Brewfile           # Homebrew formulae, casks, mas apps
-    ├── asdf/
-    │   └── tool-versions      # ASDF global versions file
-    ├── zsh/
-    │   ├── zshrc              # Zsh configuration
-    │   └── zinit.zsh          # Plugin manager loader
-    ├── git/
-    │   └── gitconfig          # Global Git settings & aliases
-    └── mas/
-        └── apps               # App Store app IDs for `mas install`
-  ```
+      ```bash
+   source ~/.zshrc
+   ```
 
 ## Usage
 - To update CLI tools & apps:
