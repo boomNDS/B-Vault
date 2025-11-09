@@ -1,5 +1,7 @@
 # B-Vault
-CLI tool collection and a step‑by‑step setup guide for your new shell environment.
+[![Automated macOS Setup](https://img.shields.io/badge/macOS%20Setup-Automated-blue?style=flat-square&logo=apple)](#installation)
+
+CLI tool collection 🧰 and a step‑by‑step setup guide for your new shell environment.
 
 ## Overview
 
