@@ -2,6 +2,7 @@
 
 tap "homebrew/core"
 tap "homebrew/cask"
+tap "teamookla/speedtest"
 
 # Install mas CLI for Mac App Store apps
 brew "mas"
@@ -11,7 +12,7 @@ brew "asdf"             # Version manager for multiple runtimes
 brew "bat"              # cat clone with syntax highlighting
 brew "btop"             # Resource monitor with nice UI
 brew "curl"             # Data transfer utility
-brew "exa"              # Modern replacement for 'ls'
+brew "eza"              # Modern, maintained replacement for 'ls'
 brew "fd"               # Simple, fast alternative to 'find'
 brew "fzf"              # Command-line fuzzy finder
 brew "git"              # Distributed version control system
@@ -23,6 +24,8 @@ brew "nmap"             # Network exploration and security auditing
 brew "oha"              # HTTPing on steroids
 brew "pnpm"             # Fast, disk-efficient JS package manager
 brew "python"           # Latest Python interpreter
+brew "teamookla/speedtest/speedtest" # Official Ookla Speedtest CLI
+brew "starship"         # Minimal, highly configurable shell prompt
 brew "redis"            # In-memory data structure store
 brew "telnet"           # User interface to Telnet protocol
 brew "tree"             # Display directory tree in terminal
@@ -36,38 +39,55 @@ brew "zoxide"           # Fast, adaptive directory jumper
 brew "zsh"              # Z shell
 brew "zsh-completions"  # Additional Zsh completions
 brew "zstd"             # Fast compression algorithm
+brew "antidote"         # Fast Zsh plugin manager used by this repo
 
-# Casks
-cask "1password"
-cask "aegisub"
-cask "bear"
-cask "brave-browser"
-cask "discord"
-cask "figma"
-cask "flux"
-cask "ghostty"
-cask "google-chrome"
-cask "hex-fiend"
-cask "line"
-cask "medis"
-cask "monitorcontrol"
-cask "ngrok"
-cask "notion"
-cask "obs"
-cask "orbstack"
-cask "parcel"
-cask "pop"
-cask "postman"
-cask "quitter"
-cask "runcat"
-cask "steam"
-cask "suspicious-package"
-cask "tableplus"
-cask "terminus"
-cask "vanilla"
-cask "zed"
+# Casks (each comment links to the official download page in case the cask fails)
+cask "1password"           # https://1password.com/downloads/mac
+cask "airserver"           # https://www.airserver.com/Download
+cask "aegisub"             # https://aegisub.org/
+cask "authy"               # https://authy.com/download/
+cask "bear"                # https://bear.app/
+cask "brave-browser"       # https://brave.com/download/
+cask "clickup"             # https://clickup.com/download
+cask "cloudflare-warp"     # https://one.one.one.one/
+cask "cursor"              # https://cursor.sh/
+cask "discord"             # https://discord.com/download
+cask "figma"               # https://www.figma.com/downloads/
+cask "flux"                # https://justgetflux.com/
+cask "ghostty"             # https://ghostty.org/docs
+cask "google-chrome"       # https://www.google.com/chrome/
+cask "hex-fiend"           # https://hexfiend.com/
+cask "linear-linear"       # https://linear.app/download
+cask "line"                # https://line.me/en/download
+cask "macs-fan-control"    # https://crystalidea.com/macs-fan-control
+cask "medis"               # https://getmedis.com/
+cask "messenger"           # https://www.messenger.com/desktop
+cask "monitorcontrol"      # https://github.com/MonitorControl/MonitorControl
+cask "ngrok"               # https://ngrok.com/download
+cask "notion"              # https://www.notion.so/desktop
+cask "numi"                # https://numi.app/
+cask "obs"                 # https://obsproject.com/download
+cask "orbstack"            # https://orbstack.dev/
+cask "parcel"              # https://getparcel.app/
+cask "pop"                 # https://pop.com/
+cask "postman"             # https://www.postman.com/downloads/
+cask "quitter"             # https://marco.org/apps
+cask "runcat"              # https://apps.apple.com/us/app/runcat/id1429033973
+cask "slack"               # https://slack.com/downloads/mac
+cask "steam"               # https://store.steampowered.com/about/
+cask "suspicious-package"  # https://www.mothersruin.com/software/SuspiciousPackage/
+cask "tableplus"           # https://tableplus.com/download
+cask "terminus"            # https://eugeny.github.io/terminus/
+cask "trello"              # https://trello.com/th
+cask "vanilla"             # https://matthewpalmer.net/vanilla/
+cask "visual-studio-code"  # https://code.visualstudio.com/Download
+cask "yaak"                # https://yaak.app/
+cask "zed"                 # https://zed.dev/
+cask "zeplin"              # https://zeplin.io/
+cask "zoom"                # https://zoom.us/download
 
-# Mac App Store apps via mas
-mas "Monosnap",         id: 540348655
-mas "Telegram",         id: 747648890   # Telegram Desktop
-mas "CleanMyMac X",     id: 403504912
+# Mac App Store apps via mas (manual links for fallback installs)
+mas "Monosnap",         id: 540348655   # https://apps.apple.com/app/monosnap/id540348655
+mas "Telegram",         id: 747648890   # https://apps.apple.com/app/telegram/id747648890
+mas "CleanMyMac X",     id: 403504912   # https://apps.apple.com/app/cleanmymac-x/id403504912
+mas "Magnet",           id: 441258766   # https://apps.apple.com/app/magnet/id441258766
