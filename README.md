@@ -6,17 +6,28 @@ CLI tool collection and a step‑by‑step setup guide for your new shell enviro
 This repository is **a collection of CLI tool programs and a step‑by‑step guide** for bootstrapping a brand‑new macOS environment. It installs and configures:
 
 - Homebrew and a custom Brewfile (CLI tools & casks)
-- **[ASDF](https://asdf-vm.com)** version manager with plugins for Node.js, Yarn, Python, Go, Elixir, and Flutter
-- Zsh with a lightweight plugin manager and essential plugins
+- **[ASDF](https://asdf-vm.com)** version manager with plugins for Node.js, Yarn, Bun, Python, Ruby, Erlang, Elixir, and Go
+- Zsh configured with the lightweight **[Antidote](https://github.com/mattmc3/antidote)** plugin manager
+- A curated desktop stack with Ghostty, Yaak, Cursor, Visual Studio Code, Zed, Figma, Brave, TablePlus, Linear, ClickUp, Notion, Slack, Bear, AirServer, MonitorControl, Vanilla, CleanMyMac, Macs Fan Control, Cloudflare Warp, the official Ookla Speedtest CLI, and more
 - Git global configuration and aliases
-- **[mattmc3/antidote](https://github.com/mattmc3/antidote)** – A high‑performance Zsh plugin manager built from the ground up for speed: clones and compiles your plugins concurrently into an ultra‑fast static load file.
+- A Dracula-themed **[Starship](https://starship.rs/)** prompt configuration
 - A workspace directory at `~/git` for all your projects
 
 Each step is automated via a single `setup.sh` script, backed by modular config files.
 
+## New Mac Setup Guide
+
+1. **Update macOS & install Command Line Tools** – Run `softwareupdate --install --all`, then execute `xcode-select --install` so Homebrew can build anything it needs.
+2. **Sign into Apple ID & App Store** – `mas` installs require you to be logged in; open the App Store once and sign in before running the bootstrap script.
+3. **Generate/import SSH keys** – Copy your existing `~/.ssh` contents or create a new key with `ssh-keygen -t ed25519 -C "you@example.com"` and add it to GitHub/GitLab.
+4. **Clone this repo** – `git clone https://github.com/boomNDS/B-Vault ~/.dotfiles` (override `DOTFILES` if you prefer another location).
+5. **Review configs** – Skim `brew/Brewfile`, `asdf/tool-versions`, and `zsh/zshrc` to add/remove anything specific to you before kicking off the install.
+6. **Run the installer** – `cd ~/.dotfiles && bash setup.sh`; keep the terminal open so you can approve any manual prompts (e.g., App Store downloads).
+7. **Verify and sync data** – After the script finishes, sign back into services (Slack, Discord, etc.), restore app settings, and rerun `brew bundle`/`asdf install` if you tweak configs.
+
 ## Installation
 
-1. Clone this repo:
+1. Clone this repo (override the target directory by exporting `DOTFILES=/path/to/dir` before running the script):
    ```bash
    git clone https://github.com/boomNDS/B-Vault ~/.dotfiles
    ```
@@ -31,19 +42,19 @@ Each step is automated via a single `setup.sh` script, backed by modular config 
 ### Repository Structure
   ```bash
     .
-    ├── .gitignore             # This file
+    ├── .gitignore
     ├── setup.sh               # One‑shot bootstrap script
-    ├── brew/
-    │   └── Brewfile           # Homebrew formulae, casks, mas apps
+    ├── cursor/
+    │   └── extensions.json    # Snapshot of installed Cursor extensions
     ├── asdf/
     │   └── tool-versions      # ASDF global versions file
-    ├── zsh/
-    │   ├── zshrc              # Zsh configuration
-    │   └── zinit.zsh          # Plugin manager loader
+    ├── brew/
+    │   └── Brewfile           # Homebrew formulae, casks, mas apps
     ├── git/
     │   └── gitconfig          # Global Git settings & aliases
-    └── mas/
-        └── apps               # App Store app IDs for `mas install`
+    ├── starship.toml          # Dracula-themed prompt configuration
+    └── zsh/
+        └── zshrc              # Zsh configuration + Antidote plugin list
   ```
 
 ## Usage
@@ -57,10 +68,27 @@ Each step is automated via a single `setup.sh` script, backed by modular config 
 - To add a new Homebrew formula or cask: edit brew/Brewfile and rerun brew bundle.
 - To add a new ASDF tool: run asdf plugin-add <name> and update asdf/tool-versions.
 
+### Manual installs when a cask or MAS app fails
+1. Re-run `brew bundle --file=brew/Brewfile` to confirm the failure.
+2. Open `brew/Brewfile` and copy the URL comment next to the failing entry. Each cask/MAS listing now links to its official download page (e.g., Ghostty → https://ghostty.org/docs, Orbstack → https://orbstack.dev/, Yaak → https://yaak.app/).
+3. Download and install the app manually from that URL.
+4. For MAS apps, open the App Store with the linked URL, sign in, and install from there; `mas install <id>` will register it afterward.
+5. After manual installation, rerun `brew bundle --file=brew/Brewfile` so Homebrew marks the dependency as satisfied.
+
+## Cursor extensions
+- The current Cursor extension set is tracked in `cursor/extensions.json` (exported directly from `~/.cursor/extensions/extensions.json`).
+- To install everything on a new machine, run:
+  ```bash
+  jq -r '.[].identifier.id' cursor/extensions.json | xargs -L1 cursor --install-extension
+  ```
+  (replace `cursor` with `code` if you prefer using VS Code’s CLI shim).
+- After adding or removing extensions inside Cursor, regenerate the manifest with `cp ~/.cursor/extensions/extensions.json cursor/extensions.json && jq -r '.' cursor/extensions.json > cursor/extensions.json`.
+
 ## Customization
-- [Zsh plugins](https://asdf-vm.com/guide/getting-started.html): modify zsh/zinit.zsh (or your chosen manager) to add/remove plugins
-- [Git aliases](https://www.atlassian.com/git/tutorials/saving-changes/gitignore): edit git/gitconfig to add shortcuts under
-- App selection: update mas/apps or brew/Brewfile to include additional GUI or App Store apps
+- Zsh & plugins: edit `zsh/zshrc` (Antidote loads whatever plugin bundle you define there) and rerun `source ~/.zshrc`
+- Git defaults & aliases: tweak `git/gitconfig`
+- Prompt: modify `starship.toml`, then restart your shell
+- Homebrew formulas/casks/mas apps: adjust `brew/Brewfile` and rerun `brew bundle --file=brew/Brewfile`
 
 ## zsh plugins list
 1. **[valentinocossar/vscode](https://github.com/valentinocossar/vscode)** – An Oh My Zsh plugin to open files and directories in Visual Studio Code via the `vs`/`vsa` commands.
