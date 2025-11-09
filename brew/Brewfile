@@ -18,6 +18,7 @@ brew "fzf"              # Command-line fuzzy finder
 brew "git"              # Distributed version control system
 brew "htop"             # Interactive process viewer
 brew "httpie"           # Human-friendly HTTP client for APIs
+brew "imagemagick"      # Image manipulation toolkit (https://imagemagick.org/script/download.php)
 brew "jq"               # Lightweight JSON processor
 brew "mkcert"           # Easily create local SSL certificates
 brew "nmap"             # Network exploration and security auditing
