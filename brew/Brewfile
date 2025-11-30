@@ -15,6 +15,7 @@ brew "curl"             # Data transfer utility
 brew "eza"              # Modern, maintained replacement for 'ls'
 brew "fd"               # Simple, fast alternative to 'find'
 brew "fzf"              # Command-line fuzzy finder
+brew "atuin"            # Encrypted, syncable shell history backend (https://atuin.sh)
 brew "git"              # Distributed version control system
 brew "htop"             # Interactive process viewer
 brew "httpie"           # Human-friendly HTTP client for APIs

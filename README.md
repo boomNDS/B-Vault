@@ -92,14 +92,33 @@ Each step is automated via a single `setup.sh` script, backed by modular config 
 - Prompt: modify `starship.toml`, then restart your shell
 - Homebrew formulas/casks/mas apps: adjust `brew/Brewfile` and rerun `brew bundle --file=brew/Brewfile`
 
+## Command history upgrades
+- Default history recall uses `fzf` on `Ctrl+R` (see the `FZF_DEFAULT_OPTS` block in `zsh/zshrc`).
+- For aggressive de-duplication, timestamps, and a deeper tour of Zsh’s history knobs, follow [Supercharged Zsh Command History](https://mikebian.co/supercharged-zsh-command-history/?utm_source=chatgpt.com).
+- Prefer a synced, structured backend? Add [Atuin](https://atuin.sh/#cli-section) to `brew/Brewfile`, install it, run `atuin import auto` to bring in `~/.zsh_history`, and enable it with `eval "$(atuin init zsh)"` in `zsh/zshrc`.
+- Use the Atuin CLI workflow from their docs (`atuin register`/`login`, then `atuin sync` and `atuin search`) to keep history encrypted and available across machines.
+
+### Atuin setup guide (keep fzf Ctrl+R)
+1) Install: `brew bundle --file=brew/Brewfile` (installs `atuin` with the rest of your CLI stack).  
+2) Create or log into your Atuin account: `atuin register` (first machine) or `atuin login` (subsequent machines).  
+3) Import your existing Zsh history: `atuin import auto`.  
+4) Add Atuin to your shell without stealing your fzf `Ctrl+R` binding. Append to `zsh/zshrc`:
+```zsh
+# Atuin: encrypted, syncable history (keeps fzf Ctrl+R)
+export ATUIN_NOBIND=1
+eval "$(atuin init zsh)"
+```
+   Remove `ATUIN_NOBIND=1` if you want Atuin to take over `Ctrl+R`.  
+5) Sync between machines: `atuin sync`. Search history anywhere: `atuin search <term>`.  
+6) Optional quality-of-life: `atuin stats` for activity insights; set `ATUIN_DEFAULT_BIND=ctrl-r` if you prefer Atuin’s search UI on `Ctrl+R`.
+
 ## zsh plugins list
 1. **[valentinocossar/vscode](https://github.com/valentinocossar/vscode)** – An Oh My Zsh plugin to open files and directories in Visual Studio Code via the `vs`/`vsa` commands.
 2. **[zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)** – Fish‑like fast, unobtrusive autosuggestions as you type, based on your history and completions.
 3. **[zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)** – Fish‑style real‑time syntax highlighting for the Zsh command line, helping catch typos before you hit Enter.
-4. **[zsh-users/zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)** – Zsh port of Fish’s history search: type any part of a past command and use ↑/↓ to traverse matching entries.
-5. **[zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)** – Hundreds of additional completion definitions (AWS‑CLI, Docker, Terraform, etc.) to layer on top of Zsh’s built‑in completions.
-6. **[ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)** – A smarter `cd` replacement (inspired by `z` and `autojump`) that tracks “frecency” and offers fuzzy jumping to your most‑used directories.
-7. **[decayofmind/zsh-fast-alias-tips](https://github.com/decayofmind/zsh-fast-alias-tips)** – Reminds you of shell aliases you’ve defined whenever you run the equivalent full command. A Go‑accelerated, 10×‑faster fork of `alias-tips`.
+4. **[zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)** – Hundreds of additional completion definitions (AWS‑CLI, Docker, Terraform, etc.) to layer on top of Zsh’s built‑in completions.
+5. **[ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)** – A smarter `cd` replacement (inspired by `z` and `autojump`) that tracks “frecency” and offers fuzzy jumping to your most‑used directories.
+6. **[decayofmind/zsh-fast-alias-tips](https://github.com/decayofmind/zsh-fast-alias-tips)** – Reminds you of shell aliases you’ve defined whenever you run the equivalent full command. A Go‑accelerated, 10×‑faster fork of `alias-tips`.
 
 ## Inspiration And Credit
 1. [Migrating Off Oh-My-Zsh and other recent Yak Shavings](https://www.stefanwienert.de/blog/2025/03/05/migrating-off-oh-my-zsh-and-other-recent-yak-shavings)
